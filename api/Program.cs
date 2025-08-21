@@ -34,6 +34,13 @@ namespace api
                 context.Database.EnsureCreated(); // Crea la base de datos y tablas si no existen
             }
 
+            app.UseCors(policy =>
+            {
+                policy.AllowAnyHeader();
+                policy.AllowAnyMethod();
+                policy.AllowAnyOrigin();
+            });
+
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
