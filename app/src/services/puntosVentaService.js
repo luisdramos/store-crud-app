@@ -6,7 +6,7 @@ export const puntosVentaService = {
     return response.data;
   },
 
-   create: async (puntoVentaData) => {
+  create: async (puntoVentaData) => {
     const response = await api.post('/PuntosVenta', puntoVentaData);
     return response.data;
   },

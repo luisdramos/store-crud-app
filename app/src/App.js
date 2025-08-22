@@ -1,10 +1,10 @@
 import './App.css';
-//import MapaPrueba from './components/MapTest';
+import MapaPrueba from './pages/MapTest';
 import ReportMap from './pages/ReportMap';
 
 function App() {
   return (    
-   // <MapView />          
+  //  <MapaPrueba />          
   <ReportMap />
   );
 }
