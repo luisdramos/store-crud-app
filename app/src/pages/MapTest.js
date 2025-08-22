@@ -4,11 +4,15 @@ import FloatingMenu from "../components/FloatingMenu";
 import { puntosVentaServiceMock } from "../services/puntosVentaService.mock";
 import { puntosVentaMuestra } from "../services/test/datosMuestra";
 
+import FloatingPieChart from "../components/FloatingPieChart";
+import { useMiniVentasData } from "../components/hooks/useMiniVentasData";
+
 
 const MapaPrueba = () => {
   const [puntos, setPuntos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [puntoSeleccionado, setPuntoSeleccionado] = useState(null);
+  const ventasData = useMiniVentasData(puntos);
 
   // Funciones para el menú
   const handleAddPoint = () => {
@@ -91,6 +95,8 @@ const MapaPrueba = () => {
           <button onClick={() => filtrarPorZona('Zona Oeste')}>Zona Oeste</button>
           <button onClick={() => setPuntos(puntosVentaMuestra)}>Todos</button>
         </div>
+
+        <FloatingPieChart data={ventasData} className="floating-pie-chart"/>
 
         <div className="estadisticas">
           <p><strong>Total puntos:</strong> {puntos.length}</p>

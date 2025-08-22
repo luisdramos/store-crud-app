@@ -3,11 +3,13 @@ import MapView from "../components/MapView";
 import FloatingMenu from "../components/FloatingMenu";
 import { puntosVentaService } from "../services/puntosVentaService";
 import Modal, { FIELD_TYPES } from "../components/Modal";
+import FloatingPieChart from "../components/FloatingPieChart";
+import { useMiniVentasData } from "../components/hooks/useMiniVentasData";
+import '../styles/FloatingPieChart.css';
 
 const ReportMap = () => {
   const [puntos, setPuntos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [puntoSeleccionado, setPuntoSeleccionado] = useState(null);  
   
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -100,6 +102,8 @@ const ReportMap = () => {
     }
   ], [puntos]);
 
+  const ventasData = useMiniVentasData(puntos);
+
   const handleAddPoint = () => setIsAddModalOpen(true);
   const handleDeletePoint = () => setIsDeleteModalOpen(true);
   const handleEditPoint = () => setIsEditModalOpen(true);
@@ -161,6 +165,12 @@ const ReportMap = () => {
         onEditPoint={handleEditPoint}
       />  
 
+      <FloatingPieChart 
+      data={ventasData} 
+      className="floating-pie-chart"
+      style= {{ position: 'absolute', top: '10px', right: '10px', zIndex: 1000 }}
+      />
+
       <Modal
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
@@ -197,13 +207,13 @@ const ReportMap = () => {
         cancelText="Cancelar"
         size="medium"
       />
-
+        
       <MapView
-        center={[19.64585088577751, -99.1967378959387]} // Cuautitlan Izcalli 
-        zoom={14}
-        puntos={puntos}
-        scrollWheelZoom={true}
-        />
+          puntos={puntos}
+          zoom={14}
+          center={[19.64585088577751, -99.1967378959387]} // Cuautitlan Izcalli 
+          scrollWheelZoom={true}          
+      />      
     </div>
   );
 
