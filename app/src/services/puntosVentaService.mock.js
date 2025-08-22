@@ -1,4 +1,4 @@
-import { puntosVentaMuestra } from "../components/test/datosMuestra";
+import { puntosVentaMuestra } from "./test/datosMuestra";
 
 export const puntosVentaServiceMock = {
   // Simular obtención de todos los puntos

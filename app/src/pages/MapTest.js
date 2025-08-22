@@ -1,14 +1,41 @@
 import React, { useEffect, useState } from "react";
-import MapView from "./MapView";
+import MapView from "../components/MapView";
+import FloatingMenu from "../components/FloatingMenu";
 import { puntosVentaServiceMock } from "../services/puntosVentaService.mock";
-import { puntosVentaMuestra } from "./test/datosMuestra";
-import "../styles/Map.css";
+import { puntosVentaMuestra } from "../services/test/datosMuestra";
 
 
 const MapaPrueba = () => {
   const [puntos, setPuntos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [puntoSeleccionado, setPuntoSeleccionado] = useState(null);
+
+  // Funciones para el menú
+  const handleAddPoint = () => {
+    console.log('Agregar nuevo punto');
+    // Aquí iría la lógica para abrir modal de alta
+    alert('Funcionalidad de Alta de Punto');
+  };
+
+  const handleDeletePoint = () => {
+    if (!puntoSeleccionado) {
+      alert('Selecciona un punto en el mapa primero');
+      return;
+    }
+    console.log('Eliminar punto:', puntoSeleccionado.id);
+    // Aquí iría la lógica para eliminar
+    alert(`Eliminar punto: ${puntoSeleccionado.descripcion}`);
+  };
+
+  const handleEditPoint = () => {
+    if (!puntoSeleccionado) {
+      alert('Selecciona un punto en el mapa primero');
+      return;
+    }
+    console.log('Editar punto:', puntoSeleccionado.id);
+    // Aquí iría la lógica para editar
+    alert(`Editar punto: ${puntoSeleccionado.descripcion}`);
+  };  
 
   useEffect(() => {
     const cargarPuntos = async () => {
@@ -53,6 +80,7 @@ const MapaPrueba = () => {
 
   return (
     <div className="mapa-prueba-container">
+      
       <div className="controles">
         <h2>Mapa de Puntos de Venta (Datos de Prueba)</h2>
         

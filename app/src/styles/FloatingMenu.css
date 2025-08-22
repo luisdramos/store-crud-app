@@ -1,0 +1,206 @@
+.floating-menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.floating-menu.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.floating-menu.hidden {
+  transform: translateY(-100px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.menu-toggle {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.menu-toggle:active {
+  transform: scale(0.95);
+}
+
+.menu-content {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  overflow: hidden;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-header {
+  padding: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.menu-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.menu-items {
+  padding: 8px;
+}
+
+.menu-item {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  color: #2d3748;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.menu-item:hover {
+  background: #f7fafc;
+  transform: translateX(2px);
+}
+
+.menu-item.add:hover {
+  color: #38a169;
+  background: #f0fff4;
+}
+
+.menu-item.delete:hover {
+  color: #e53e3e;
+  background: #fff5f5;
+}
+
+.menu-item.edit:hover {
+  color: #d69e2e;
+  background: #fffaf0;
+}
+
+.menu-item span {
+  flex: 1;
+  text-align: left;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .floating-menu {
+    top: 15px;
+    right: 15px;
+  }
+
+  .menu-toggle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .menu-content {
+    top: 54px;
+    right: 0;
+    min-width: 180px;
+  }
+
+  .menu-item {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-menu {
+    top: 10px;
+    right: 10px;
+  }
+
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .menu-content {
+    top: 50px;
+    min-width: 160px;
+  }
+
+  .menu-header {
+    padding: 12px;
+  }
+
+  .menu-header h3 {
+    font-size: 14px;
+  }
+}
+
+/* Efectos de animación para el menú */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.menu-toggle:focus {
+  outline: none;
+  animation: pulse 0.5s ease;
+}
+
+/* Mejora de accesibilidad */
+.menu-item:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Modo oscuro opcional */
+@media (prefers-color-scheme: dark) {
+  .menu-content {
+    background: #2d3748;
+    color: white;
+  }
+
+  .menu-item {
+    color: #e2e8f0;
+  }
+
+  .menu-item:hover {
+    background: #4a5568;
+  }
+}
