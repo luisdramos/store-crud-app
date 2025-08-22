@@ -4,7 +4,7 @@ import ReportMap from './pages/ReportMap';
 
 function App() {
   return (    
-  //  <MapaPrueba />          
+    //<MapaPrueba />          
   <ReportMap />
   );
 }

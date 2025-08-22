@@ -1,0 +1,6 @@
+17.14.827.52834
+api/bin/
+api/obj/*
+api/.dockerignore
+api/.vs
+app/node_modules
